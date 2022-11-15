@@ -22,6 +22,8 @@ export const ContactListItem = styled.li`
   padding: 10px;
   text-align: center;
   border-radius: 5px;
+
+  background-color: #ccf9ef;
 `;
 
 export const ContactItemHeader = styled.h2`

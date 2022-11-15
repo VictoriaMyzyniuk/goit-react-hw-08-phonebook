@@ -23,6 +23,7 @@ export const Filter = () => {
         name="filter"
         value={filter}
         onChange={onFilterChange}
+        placeholder="Start to enter contact name"
       />
     </FilterWrapper>
   );

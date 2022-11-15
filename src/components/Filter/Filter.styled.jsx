@@ -16,6 +16,9 @@ export const FilterInput = styled.input`
   outline-color: #5edcb0;
   border-color: #0aab7e;
   font-weight: 700;
+  /* background-color: #d7f2f4; */
+
+  /* color: #535753; */
 `;
 
 export const FilterLabel = styled.label`

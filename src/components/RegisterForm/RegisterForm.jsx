@@ -2,7 +2,9 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { register } from 'redux/auth/operations';
-import { selectAuthError } from 'redux/auth/selectors';
+import { selectRegisterError } from 'redux/auth/selectors';
+import { updateErrorRegister } from 'redux/auth/authSlice';
+import { useEffect } from 'react';
 
 import {
   FormRegisterEl,
@@ -28,7 +30,14 @@ const schema = yup.object().shape({
 export const RegisterForm = () => {
   const dispatch = useDispatch();
 
-  const error = useSelector(selectAuthError);
+  const error = useSelector(selectRegisterError);
+
+  useEffect(() => {
+    dispatch(updateErrorRegister(error));
+    return () => {
+      dispatch(updateErrorRegister(null));
+    };
+  });
 
   const handleSubmit = (values, { resetForm }) => {
     dispatch(register(values));
@@ -47,15 +56,23 @@ export const RegisterForm = () => {
       >
         <FormRegisterEl>
           <RegisterLabel>Username</RegisterLabel>
-          <InputRegisterEl type="text" name="name" />
+          <InputRegisterEl type="text" name="name" placeholder="Enter name" />
           <InputError name="name" component="div" />
 
           <RegisterLabel>Email</RegisterLabel>
-          <InputRegisterEl type="email" name="email" />
+          <InputRegisterEl
+            type="email"
+            name="email"
+            placeholder="Enter email"
+          />
           <InputError name="email" component="div" />
 
           <RegisterLabel>Password</RegisterLabel>
-          <InputRegisterEl type="password" name="password" />
+          <InputRegisterEl
+            type="password"
+            name="password"
+            placeholder="Enter password"
+          />
           <InputError name="password" component="div" />
 
           <SubmitRegisterButton type="submit">Register</SubmitRegisterButton>
