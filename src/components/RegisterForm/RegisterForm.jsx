@@ -16,13 +16,7 @@ import {
 } from 'components/RegisterForm/RegisterForm.styled';
 
 const schema = yup.object().shape({
-  name: yup
-    .string()
-    .matches(
-      /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
-      'Name may contain only letters, apostrophe, dash and spaces'
-    )
-    .required(),
+  name: yup.string().required(),
   email: yup.string().email('Not a proper email'),
   password: yup.string().min(6).required('Password is required'),
 });
